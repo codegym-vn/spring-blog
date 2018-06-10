@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Create post</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Create post</h1>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form th:object="${postForm}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" th:field="*{title}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Category:</label>
+            <select th:field="*{category}">
+                <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Teaser:</label>
+            <textarea type="text" th:field="*{teaser}" id="teaser-summernote" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Content:</label>
+            <textarea th:field="*{content}" id="content-summernote" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Feature image:</label>
+            <input type="file" th:field="*{feature}"/>
+        </div>
+        <div>
+            <input type="submit" value="Create post">
+        </div>
+    </form>
+</section>
+</body>
+</html>

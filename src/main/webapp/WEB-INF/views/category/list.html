@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1>Categories</h1>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <th:block th:each="category : ${categories}">
+                <tr>
+                    <td><a th:href="@{/categories/__${category.id}__}" th:text="${category.name}"></a></td>
+                    <td><a th:href="@{/categories/__${category.id}__/edit}">Edit</a></td>
+                    <td><a th:href="@{/categories/__${category.id}__/delete}">Delete</a></td>
+                </tr>
+            </th:block>
+        </table>
+    </section>
+</body>
+</html>

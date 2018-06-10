@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>View category</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Category: <span th:text="${category.name}"></span></h1>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Created date</th>
+        </tr>
+        <th:block th:each="post : ${posts}">
+            <tr>
+                <td>
+                    <a th:href="@{/posts/__${post.id}__}"th:text="${post.title}"></a>
+                </td>
+                <td th:text="${post.created}">
+                </td>
+            </tr>
+        </th:block>
+    </table>
+</section>
+</body>
+</html>

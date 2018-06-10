@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Blog</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div th:each="post : ${posts}" class="row post">
+                <div class="col-md-12">
+                    <a th:href="@{/posts/__${post.id}__}"><h3 th:text="${post.title}"></h3></a>
+                </div>
+                <div class="col-md-5 post-feature">
+                    <a th:href="@{/posts/__${post.id}__}"><img th:src="@{/features/__${post.feature}__}"/></a>
+                </div>
+                <div class="col-md-7 post-teaser" th:utext="${post.teaser}"></div>
+                <div class="col-md-12 post-meta">
+                    <span th:text="${post.created}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

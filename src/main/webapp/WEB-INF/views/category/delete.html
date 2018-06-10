@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete category</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Delete category</h1>
+    <h2>Are you sure?</h2>
+    <form th:object="${category}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td th:text="${category.name}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Delete category"></td>
+            </tr>
+        </table>
+    </form>
+</section>
+</body>
+</html>

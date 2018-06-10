@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete post</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1>Delete post</h1>
+    <form th:object="${post}" method="post">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" th:field="*{title}" class="form-control" disabled/>
+        </div>
+        <div>
+            <input type="submit" value="Delete post">
+        </div>
+    </form>
+</section>
+</body>
+</html>
